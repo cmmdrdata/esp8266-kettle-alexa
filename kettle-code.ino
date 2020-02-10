@@ -11,7 +11,6 @@
 
 #include <Servo.h>
 
-#define FILL_DELAY 10 //seconds to fill kettle
 Servo myservo;  // create servo object to control a servo
 
 ESP8266WiFiMulti WiFiMulti;
@@ -23,7 +22,6 @@ WiFiClient client;
 #define MyWifiPassword "*****" // TODO: Change to your Wifi network password
 
 #define HEARTBEAT_INTERVAL 300000 // 5 Minutes
-#define FILL 5
 #define ON HIGH
 #define OFF LOW
 
@@ -38,15 +36,10 @@ void turnOn(String deviceId) {
   {
     Serial.print("Turn on device id: ");
     Serial.println(deviceId);
-    //fillKettle();
     kettleOn();
 
   }
-  else if (deviceId == "5axxxxxxxxxxxxxxxxxxx") // Device ID of second device
-  {
-    Serial.print("Turn on device id: ");
-    Serial.println(deviceId);
-  }
+
   else {
     Serial.print("Turn on for unknown device id: ");
     Serial.println(deviceId);
@@ -60,11 +53,7 @@ void turnOff(String deviceId) {
      Serial.println(deviceId);
      kettleOff();
    }
-   else if (deviceId == "5axxxxxxxxxxxxxxxxxxx") // Device ID of second device
-   {
-     Serial.print("Turn off Device ID: ");
-     Serial.println(deviceId);
-  }
+
   else {
      Serial.print("Turn off for unknown device id: ");
      Serial.println(deviceId);
